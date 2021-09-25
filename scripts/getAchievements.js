@@ -1,4 +1,6 @@
 const achievement = document.getElementById("titles")
+const loader = document.getElementById("spinner")
+
 //function creates a paragraph element with a name
 // and adds it to the title container
 let numberofRows = 1;
@@ -18,6 +20,12 @@ let pageNumber = 1
 function nextPage() {
     pageNumber += 1;
     getAchievements()
+    showSpinner()
+}
+
+//spinner to show/hide
+function showSpinner() {
+    loader.style.visibility = visible;
 }
 
 //fetch function
@@ -33,7 +41,7 @@ function getAchievements() {
       })
     })
     .catch((error) => {
-      console.log("error")  
+      console.log("error") 
     })
 }
 getAchievements()
