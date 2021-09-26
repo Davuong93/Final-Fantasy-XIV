@@ -20,28 +20,34 @@ let pageNumber = 1
 function nextPage() {
     pageNumber += 1;
     getAchievements()
-    showSpinner()
 }
 
 //spinner to show/hide
-function showSpinner() {
-    loader.style.visibility = visible;
+function showSpinner(isLoading) {
+    if (isLoading == true) {
+        loader.style.visibility = "visible";
+    } else {
+        loader.style.visibility = "hidden";
+    }
 }
 
 //fetch function
 function getAchievements() {
+    showSpinner(true);
     fetch(`https://xivapi.com/search?indexes=achievement&page=${pageNumber}`)
-    .then((data) => {
-        return data.json();
-    })
-    .then((json) => {
-        console.log(json)
-      json.Results.forEach((item) => {
-          showAchievement(item.Name, item.Icon);
-      })
-    })
-    .catch((error) => {
-      console.log("error") 
-    })
+        .then((data) => {
+            return data.json();
+        })
+        .then((json) => {
+            console.log(json)
+            showSpinner(false)
+            json.Results.forEach((item) => {
+                showAchievement(item.Name, item.Icon);
+            })
+        })
+        .catch((error) => {
+            console.log("error")
+            showSpinner(false);
+        })
 }
 getAchievements()
