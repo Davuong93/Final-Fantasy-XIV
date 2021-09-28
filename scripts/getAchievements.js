@@ -1,5 +1,6 @@
 const achievement = document.getElementById("titles")
 const loader = document.getElementById("spinner")
+const button = document.getElementById("addMore")
 
 //function creates a paragraph element with a name
 // and adds it to the title container
@@ -31,6 +32,16 @@ function showSpinner(isLoading) {
     }
 }
 
+//Hide button when error
+function hideButton(more) {
+    if (more == false) {
+        button.style.visibility = "hidden";
+        alert("All Achievements are loaded")
+    } else {
+        return
+    }
+}
+
 //fetch function
 function getAchievements() {
     showSpinner(true);
@@ -46,8 +57,10 @@ function getAchievements() {
             })
         })
         .catch((error) => {
-            console.log("error")
+            console.log("Error")
             showSpinner(false);
+            hideButton(false);
         })
 }
+
 getAchievements()

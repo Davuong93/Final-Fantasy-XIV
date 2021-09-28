@@ -1,3 +1,27 @@
 .hideLoader {
     visibility: hidden;
 }
+body {
+    background-image: url("../Images/background.png");
+    background-size: cover;
+
+}
+.center {
+    margin: auto;
+    margin-top: 50px;
+    width: 60%;
+    border: 5px;
+    padding: 10px;
+    --bs-bg-opacity: 0.10;
+    border: 5px;
+    border-style: solid;
+    border-width: medium;
+    border-radius: 12px;
+    background-color: beige;
+}
+
+h1 {
+    margin: auto;
+    width: 60%;
+    color: beige;
+}
