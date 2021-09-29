@@ -33,13 +33,13 @@ function showSpinner(isLoading) {
 }
 
 //Hide button when error
-function hideButton(more) {
-    if (more == false) {
+function hideButton() {
         button.style.visibility = "hidden";
-        alert("All Achievements are loaded")
-    } else {
-        return
-    }
+}
+
+//Hide Button when 
+function shouldHideButton(){
+    return pageNumber == 18;
 }
 
 //fetch function
@@ -54,12 +54,16 @@ function getAchievements() {
             showSpinner(false)
             json.Results.forEach((item) => {
                 showAchievement(item.Name, item.Icon);
+            if (shouldHideButton()) {
+                hideButton();
+            }
             })
         })
         .catch((error) => {
             console.log("Error")
             showSpinner(false);
-            hideButton(false);
+            hideButton();
+
         })
 }
 
